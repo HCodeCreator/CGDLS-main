@@ -110,7 +110,7 @@ class Coach():
                 self.epoch, time.time() - start_time, epoch_losses
             ), flush=True)
             if self.epoch % 5 == 0:
-                recall, ndcg ,test_time_elapsed = self.test(self.testloader, uuuEmbeds,uciEmbeds_train)
+                recall, ndcg ,test_time_elapsed = self.test(self.testloader, uuuEmbeds, uciEmbeds_train)
                 test_times.append(test_time_elapsed)
                 # Record the history of recall and ndcg
                 self.his_recall.append(recall)
@@ -217,7 +217,7 @@ class Coach():
             allNdcg += ndcg
         return allRecall, allNdcg
 
-    def test(self, dataloader,uuuEmbeds,uciEmbeds_test):
+    def test(self, dataloader,uuuEmbeds, uciEmbeds):
         self.SDNet.eval()
         self.GCNModel.eval()
         Recall, NDCG = [0] * 2
@@ -232,10 +232,8 @@ class Coach():
                 uEmbeds = uiEmbeds[:self.n_user]
                 iEmbeds = uiEmbeds[self.n_user:]
                 user = uEmbeds[user_idx]
-                # user_predict = self.DiffProcess.p_sample(self.SDNet, uuuEmbeds[user_idx], args.sampling_steps, user_idx,
-                #                                          uciEmbeds_test,args.sampling_noise)
                 user_predict = self.DiffProcess.p_sample(self.SDNet, uuuEmbeds[user_idx], args.sampling_steps, user_idx,
-                                                         uciEmbeds_test, args.sampling_noise)
+                                                         uciEmbeds, args.sampling_noise)
                 user = user + user_predict
                 trnMask = trnMask.to(self.device)
                 allPreds = t.mm(user, t.transpose(iEmbeds, 1, 0)) * (1 - trnMask) - trnMask * 1e8
@@ -249,7 +247,7 @@ class Coach():
             Recall = Recall / num
             NDCG = NDCG / num
 
-        return Recall, NDCG,time_elapsed
+        return Recall, NDCG, time_elapsed
 
     def saveHistory(self):
         history = dict()
