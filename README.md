@@ -78,8 +78,7 @@ CGDLS outperforms the baseline model with top-20 settings.
 
 ## Acknowledgements
 We are particularly grateful to the authors of RecDiff, as parts of our code implementation were derived from their work. We have cited the relevant references in our paper.
-Click to browse RecDiff: https://dl.acm.org/doi/pdf/10.1145/3627673.3679630
+Click to browse RecDiff: https://dl.acm.org/doi/abs/10.1145/3627673.3679630
 
 ## Citation
 If you feel our work is insightful and want to use the code or cite our paper, please add the following citation to your paper references.
-
