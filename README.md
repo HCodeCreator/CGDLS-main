@@ -59,7 +59,6 @@ If you feel our work is insightful and want to use the code or cite our paper, p
   year={2026},
   publisher={Springer}
 }
-
 ```
 
 
