@@ -48,7 +48,7 @@ Click to browse RecDiff: https://dl.acm.org/doi/abs/10.1145/3627673.3679630
 
 ## Citation
 If you feel our work is insightful and want to use the code or cite our paper, please add the following citation to your paper references.
-
+```
   @article{hu2026conditional,
   title={Conditional guided diffusion model in latent space for social recommendation},
   author={Hu, Yijun and Tang, Rui and Mo, Xian},
@@ -59,5 +59,7 @@ If you feel our work is insightful and want to use the code or cite our paper, p
   year={2026},
   publisher={Springer}
 }
+
+```
 
 
